@@ -30,6 +30,12 @@
                                 </a>
                             </li>
                             <li class="nav-item has-treeview">
+                                <a href="<?= site_url('admin/koperasi') ?>" class="nav-link" id="koperasi">
+                                    <i class="nav-icon fas fa-home"></i>
+                                    <p>Koperasi</p>
+                                </a>
+                            </li>
+                            <li class="nav-item has-treeview">
                                 <a href="<?= site_url('admin/campaign') ?>" class="nav-link" id="campaign">
                                     <i class="nav-icon fas fa-bullhorn"></i>
                                     <p>Campaign</p>
