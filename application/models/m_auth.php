@@ -19,9 +19,9 @@ class M_auth extends CI_Model
 							'login' => true
 						);
 						$this->session->set_userdata($sess);
-						$this->db->update($this->table, ['is_login' => 1], ['email' => $sess['email']]);
+						$this->db->update($this->table, ['is_login' => 1], ['email' => $user['email']]);
 
-						if ($sess['role'] == 'admin') {
+						if ($user['role'] == 'admin') {
 							redirect('admin/beranda');
 						} else {
 							redirect('koperasi/beranda');
