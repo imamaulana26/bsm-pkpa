@@ -15,7 +15,7 @@ class Auth extends CI_Controller
 	public function index()
 	{
 		$page = 'login';
-		$data['title'] = 'BSM PKPA';
+		$data['title'] = 'BSM - Rekonsel PKPA';
 
 		$isLogin = $this->session->userdata('login');
 

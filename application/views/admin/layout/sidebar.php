@@ -35,7 +35,7 @@
                                     <p>Koperasi</p>
                                 </a>
                             </li>
-                            <li class="nav-item has-treeview">
+                            <!-- <li class="nav-item has-treeview">
                                 <a href="<?= site_url('admin/campaign') ?>" class="nav-link" id="campaign">
                                     <i class="nav-icon fas fa-bullhorn"></i>
                                     <p>Campaign</p>
@@ -93,7 +93,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> -->
                         </ul>
                     </nav>
                     <!-- /.sidebar-menu -->

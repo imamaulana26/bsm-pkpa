@@ -110,12 +110,12 @@
                     </div>
                 </div>
             </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right mt-2">
+            <div class="dropdown-menu dropdown-menu-md dropdown-menu-right mt-2">
                 <a href="#" class="dropdown-item">
                     <i class="fas fa-user mr-2"></i> Profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+                <a href="<?= site_url('auth/logout') ?>" class="dropdown-item">
                     <i class="fas fa-power-off mr-2"></i> Logout
                 </a>
             </div>

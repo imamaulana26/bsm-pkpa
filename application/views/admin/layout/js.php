@@ -32,11 +32,15 @@
 $menu = $this->uri->segment(2);
 $submenu = $this->uri->segment(3);
 
-if ($submenu != '') {
-   echo "<script>$('#setting').parents().addClass('menu-open')</script>";
-   echo "<script>$('#setting').addClass('active')</script>";
-   echo "<script>$('#" . strtolower($submenu) . "').addClass('active')</script>";
-} else {
+// if ($submenu != '') {
+//    echo "<script>$('#setting').parents().addClass('menu-open')</script>";
+//    echo "<script>$('#setting').addClass('active')</script>";
+//    echo "<script>$('#" . strtolower($submenu) . "').addClass('active')</script>";
+// } else {
+//    echo "<script>$('#" . strtolower($menu) . "').addClass('active')</script>";
+// }
+
+if ($menu != '') {
    echo "<script>$('#" . strtolower($menu) . "').addClass('active')</script>";
 }
 ?>
