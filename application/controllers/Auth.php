@@ -8,6 +8,7 @@ class Auth extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		// is_login();
 
 		$this->load->model('M_auth', 'm_auth');
 	}
@@ -17,13 +18,7 @@ class Auth extends CI_Controller
 		$page = 'login';
 		$data['title'] = 'BSM - Rekonsel PKPA';
 
-		$isLogin = $this->session->userdata('login');
-
-		if (empty($isLogin)) {
-			$this->load->view($page, $data);
-		} else {
-			redirect('block');
-		}
+		$this->load->view($page, $data);
 	}
 
 	public function login()
