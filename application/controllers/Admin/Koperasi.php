@@ -10,18 +10,19 @@ class Koperasi extends CI_Controller
 
 	private function _validation()
 	{
-		$this->form_validation->set_rules('nm_koperasi', 'Nama Koperasi', 'trim|required');
+		$this->form_validation->set_rules('nm_koperasi', 'Nama Koperasi', 'trim|required|alpha');
 		$this->form_validation->set_rules('noloan', 'No. LOAN', 'trim|required');
 		$this->form_validation->set_rules('nocif', 'No. CIF', 'trim|required|numeric');
-		$this->form_validation->set_rules('jns_pembiayaab', 'Jenis Pembiayaan', 'trim|required');
-		$this->form_validation->set_rules('tujuan_pembiayaab', 'Tujuan Pembiayaan', 'trim|required');
+		$this->form_validation->set_rules('jns_pembiayaan', 'Jenis Pembiayaan', 'trim|required|alpha');
+		$this->form_validation->set_rules('tujuan_pembiayaan', 'Tujuan Pembiayaan', 'trim|required|alpha');
 		$this->form_validation->set_rules('batch', 'Batch Pencairan', 'trim|required|numeric');
 		$this->form_validation->set_rules('tgl_cair', 'Tgl. Pencairan', 'trim|required');
 		$this->form_validation->set_rules('plafond_cair', 'Plafond Pencairan', 'trim|required|numeric');
-		$this->form_validation->set_rules('ospokok', 'OS Pokok', 'trim|required|numberic');
+		$this->form_validation->set_rules('ospokok', 'OS Pokok', 'trim|required|numeric');
 
 		$this->form_validation->set_message('required', '{field} belum terisi!');
 		$this->form_validation->set_message('numeric', '{field} harus berupa angka!');
+		$this->form_validation->set_message('alpha', '{field} harus berupa alphabet!');
 	}
 
 	public function index()
@@ -53,8 +54,8 @@ class Koperasi extends CI_Controller
 	{
 		$this->_validation();
 
-		if($this->form_validation->run() === false){
-			redirect('admin/koperasi/tambah');
+		if ($this->form_validation->run() == FALSE) {
+			$this->tambah();
 		} else {
 			echo "sukses";
 		}
