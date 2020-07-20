@@ -66,4 +66,12 @@ class M_auth extends CI_Model
 
 		redirect('auth');
 	}
+
+	public function reset($username)
+	{
+		$data = $this->db->select('full_name, username, email, if(timestampdiff(second, last_login, now()) <= 1800, 0, 1) as logout')
+			->from('tbl_user')->where(['is_login' => 1, 'username' => $username])->get();
+
+		return $data;
+	}
 }

@@ -11,6 +11,14 @@
 						</ol>
 					</nav>
 
+					<?php if ($this->session->flashdata('msg')) : ?>
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							<?= $this->session->flashdata('msg'); ?>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					<?php endif; ?>
 					<div class="card">
 						<form method="post" action="<?= site_url('admin/koperasi/save') ?>" class="form-horizontal" autocomplete="off">
 							<div class="card-body">
@@ -25,7 +33,7 @@
 								</div>
 								<div class="form-group row">
 									<label class="col-sm-2 col-form-label">No. LOAN</label>
-									<div class="col-sm-3">
+									<div class="col-sm-2">
 										<input type="text" class="form-control <?= form_error('noloan') != '' ? 'is-invalid' : '' ?>" name="noloan" id="noloan" value="<?= set_value('noloan') ?>">
 										<?php if (form_error('noloan')) : ?>
 											<div class="invalid-feedback"><?= form_error('noloan') ?></div>
@@ -34,7 +42,7 @@
 								</div>
 								<div class="form-group row">
 									<label class="col-sm-2 col-form-label">No. CIF</label>
-									<div class="col-sm-3">
+									<div class="col-sm-2">
 										<input type="text" class="form-control <?= form_error('nocif') != '' ? 'is-invalid' : '' ?>" name="nocif" id="nocif" value="<?= set_value('nocif') ?>">
 										<?php if (form_error('nocif')) : ?>
 											<div class="invalid-feedback"><?= form_error('nocif') ?></div>
@@ -44,7 +52,11 @@
 								<div class="form-group row">
 									<label class="col-sm-2 col-form-label">Jenis Pembiayaan</label>
 									<div class="col-sm-4">
-										<input type="text" class="form-control <?= form_error('jns_pembiayaan') != '' ? 'is-invalid' : '' ?>" name="jns_pembiayaan" id="jns_pembiayaan" value="<?= set_value('jns_pembiayaan') ?>">
+										<select class="form-control <?= form_error('jns_pembiayaan') != '' ? 'is-invalid' : '' ?>" name="jns_pembiayaan" id="jns_pembiayaan">
+											<option value="" <?= set_select('jns_pembiayaan', '') ?> disabled selected>-- Please Select --</option>
+											<option value="Eksekuting" <?= set_select('jns_pembiayaan', 'Eksekuting') ?>>Eksekuting</option>
+											<option value="Channeling" <?= set_select('jns_pembiayaan', 'Channeling') ?>>Channeling</option>
+										</select>
 										<?php if (form_error('jns_pembiayaan')) : ?>
 											<div class="invalid-feedback"><?= form_error('jns_pembiayaan') ?></div>
 										<?php endif; ?>
@@ -53,7 +65,12 @@
 								<div class="form-group row">
 									<label class="col-sm-2 col-form-label">Tujuan Pembiayaan</label>
 									<div class="col-sm-4">
-										<input type="text" class="form-control <?= form_error('tujuan_pembiayaan') != '' ? 'is-invalid' : '' ?>" name="tujuan_pembiayaan" id="tujuan_pembiayaan" value="<?= set_value('tujuan_pembiayaan') ?>">
+										<select class="form-control <?= form_error('tujuan_pembiayaan') != '' ? 'is-invalid' : '' ?>" name="tujuan_pembiayaan" id="tujuan_pembiayaan">
+											<option value="" <?= set_select('tujuan_pembiayaan', '') ?> disabled selected>-- Please Select --</option>
+											<option value="Modal Kerja" <?= set_select('tujuan_pembiayaan', 'Modal Kerja') ?>>Modal Kerja</option>
+											<option value="Investasi" <?= set_select('tujuan_pembiayaan', 'Investasi') ?>>Investasi</option>
+											<option value="Refinancing" <?= set_select('tujuan_pembiayaan', 'Refinancing') ?>>Refinancing</option>
+										</select>
 										<?php if (form_error('tujuan_pembiayaan')) : ?>
 											<div class="invalid-feedback"><?= form_error('tujuan_pembiayaan') ?></div>
 										<?php endif; ?>
@@ -75,7 +92,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><i class="fas fa-fw fa-calendar-alt"></i></span>
 											</div>
-											<input type="text" class="form-control <?= form_error('tgl_cair') != '' ? 'is-invalid' : '' ?>" name="tgl_cair" id="tgl_cair" value="<?= set_value('tgl_cair') ?>">
+											<input type="date" class="form-control <?= form_error('tgl_cair') != '' ? 'is-invalid' : '' ?>" name="tgl_cair" id="tgl_cair" value="<?= set_value('tgl_cair') ?>">
 											<?php if (form_error('tgl_cair')) : ?>
 												<div class="invalid-feedback"><?= form_error('tgl_cair') ?></div>
 											<?php endif; ?>
@@ -89,7 +106,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text">Rp</span>
 											</div>
-											<input type="text" class="form-control <?= form_error('plafond_cair') != '' ? 'is-invalid' : '' ?>" name="plafond_cair" id="plafond_cair" value="<?= set_value('plafond_cair') ?>">
+											<input type="text" class="form-control <?= form_error('plafond_cair') != '' ? 'is-invalid' : '' ?>" name="plafond_cair" id="plafond_cair" value="<?= set_value('plafond_cair') ?>" onkeypress="return CheckNumeric();" onkeyup="FormatCurrency(this);">
 											<?php if (form_error('plafond_cair')) : ?>
 												<div class="invalid-feedback"><?= form_error('plafond_cair') ?></div>
 											<?php endif; ?>
@@ -103,7 +120,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text">Rp</span>
 											</div>
-											<input type="text" class="form-control <?= form_error('ospokok') != '' ? 'is-invalid' : '' ?>" name="ospokok" id="ospokok" value="<?= set_value('ospokok') ?>">
+											<input type="text" class="form-control <?= form_error('ospokok') != '' ? 'is-invalid' : '' ?>" name="ospokok" id="ospokok" value="<?= set_value('ospokok') ?>" onkeypress="return CheckNumeric();" onkeyup="FormatCurrency(this);">
 											<?php if (form_error('ospokok')) : ?>
 												<div class="invalid-feedback"><?= form_error('ospokok') ?></div>
 											<?php endif; ?>
@@ -144,6 +161,11 @@ $this->load->view('admin/layout/js'); ?>
 	});
 
 	$('input').on('keyup', function() {
+		$(this).removeClass('is-invalid');
+		$(this).next().empty();
+	});
+
+	$('#tgl_cair').on('change', function() {
 		$(this).removeClass('is-invalid');
 		$(this).next().empty();
 	});

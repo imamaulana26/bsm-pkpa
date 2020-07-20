@@ -26,6 +26,10 @@ class Auth extends CI_Controller
 		$username = input('username');
 		$password = md5(input('password'));
 
+		$data['reset'] = $this->m_auth->reset($username)->row_array();
+		if ($data['reset']['logout'] == 1) {
+			$this->db->update('tbl_user', ['is_login' => 0, 'last_login' => date('Y-m-d H:i:s')], ['email' => $data['reset']['email']]);
+		}
 		$this->m_auth->login($username, $password);
 	}
 
