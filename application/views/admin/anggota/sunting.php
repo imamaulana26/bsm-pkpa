@@ -20,13 +20,14 @@
 						</div>
 					<?php endif; ?>
 					<div class="card">
-						<form method="post" action="<?= site_url('admin/anggota/save') ?>" class="form-horizontal" autocomplete="off">
-							<input type="hidden" class="form-control" name="noloan_kop" id="noloan_kop" value="<?= $koperasi['noloan'] ?>">
+						<form method="post" action="<?= site_url('admin/anggota/update') ?>" class="form-horizontal" autocomplete="off">
+							<input type="hidden" class="form-control" name="id" id="id" value="<?= $data['id'] ?>">
+							<input type="hidden" class="form-control" name="noloan_kop" id="noloan_kop" value="<?= $data['noloan_kop'] ?>">
 							<div class="card-body">
 								<div class="form-group row">
 									<label class="col-sm-2 col-form-label">No. LOAN</label>
 									<div class="col-sm-2">
-										<input type="text" class="form-control <?= form_error('noloan') != '' ? 'is-invalid' : '' ?>" name="noloan" id="noloan" value="<?= set_value('noloan') ?>">
+										<input type="text" class="form-control <?= form_error('noloan') != '' ? 'is-invalid' : '' ?>" name="noloan" id="noloan" value="<?= $data['noloan_anggota'] ?>">
 										<?php if (form_error('noloan')) : ?>
 											<div class="invalid-feedback"><?= form_error('noloan') ?></div>
 										<?php endif; ?>
@@ -35,7 +36,7 @@
 								<div class="form-group row">
 									<label class="col-sm-2 col-form-label">No. CIF</label>
 									<div class="col-sm-2">
-										<input type="text" class="form-control <?= form_error('nocif') != '' ? 'is-invalid' : '' ?>" name="nocif" id="nocif" value="<?= set_value('nocif') ?>">
+										<input type="text" class="form-control <?= form_error('nocif') != '' ? 'is-invalid' : '' ?>" name="nocif" id="nocif" value="<?= $data['nocif_anggota'] ?>">
 										<?php if (form_error('nocif')) : ?>
 											<div class="invalid-feedback"><?= form_error('nocif') ?></div>
 										<?php endif; ?>
@@ -44,7 +45,7 @@
 								<div class="form-group row">
 									<label class="col-sm-2 col-form-label">Nama Anggota</label>
 									<div class="col-sm-4">
-										<input type="text" class="form-control <?= form_error('nm_anggota') != '' ? 'is-invalid' : '' ?>" name="nm_anggota" id="nm_anggota" value="<?= set_value('nm_anggota') ?>">
+										<input type="text" class="form-control <?= form_error('nm_anggota') != '' ? 'is-invalid' : '' ?>" name="nm_anggota" id="nm_anggota" value="<?= $data['nama_anggota'] ?>">
 										<?php if (form_error('nm_anggota')) : ?>
 											<div class="invalid-feedback"><?= form_error('nm_anggota') ?></div>
 										<?php endif; ?>
@@ -57,7 +58,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text">Rp</span>
 											</div>
-											<input type="text" class="form-control <?= form_error('pencairan_anggota') != '' ? 'is-invalid' : '' ?>" name="pencairan_anggota" id="pencairan_anggota" value="<?= set_value('pencairan_anggota') ?>" onkeypress="return CheckNumeric();" onkeyup="FormatCurrency(this);">
+											<input type="text" class="form-control <?= form_error('pencairan_anggota') != '' ? 'is-invalid' : '' ?>" name="pencairan_anggota" id="pencairan_anggota" value="<?= number_format($data['pencairan_anggota'], 0, '.', ',') ?>" onkeypress="return CheckNumeric();" onkeyup="FormatCurrency(this);">
 											<?php if (form_error('pencairan_anggota')) : ?>
 												<div class="invalid-feedback"><?= form_error('pencairan_anggota') ?></div>
 											<?php endif; ?>
@@ -71,7 +72,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text">Rp</span>
 											</div>
-											<input type="text" class="form-control <?= form_error('ospokok_anggota') != '' ? 'is-invalid' : '' ?>" name="ospokok_anggota" id="ospokok_anggota" value="<?= set_value('ospokok_anggota') ?>" onkeypress="return CheckNumeric();" onkeyup="FormatCurrency(this);">
+											<input type="text" class="form-control <?= form_error('ospokok_anggota') != '' ? 'is-invalid' : '' ?>" name="ospokok_anggota" id="ospokok_anggota" value="<?= number_format($data['ospokok_anggota'], 0, '.', ',') ?>" onkeypress="return CheckNumeric();" onkeyup="FormatCurrency(this);">
 											<?php if (form_error('ospokok_anggota')) : ?>
 												<div class="invalid-feedback"><?= form_error('ospokok_anggota') ?></div>
 											<?php endif; ?>

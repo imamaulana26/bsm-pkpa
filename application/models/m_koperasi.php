@@ -20,8 +20,13 @@ class M_koperasi extends CI_Model
 
 	public function get_anggota($key)
 	{
-		$data = $this->db->select('*')->from('tbl_koperasi a')->join('tbl_anggota b', 'a.noloan = b.noloan_kop', 'left')
-			->where(['b.noloan_kop' => $key])->get();
+		// $data = $this->db->select('*')->from('tbl_koperasi a')->join('tbl_anggota b', 'a.noloan = b.noloan_kop', 'left')
+		// 	->where(['b.noloan_kop' => $key])->get();
+
+		$data = array(
+			'koperasi' => $this->db->get_where($this->table, ['noloan' => $key])->row_array(),
+			'anggota' => $this->db->get_where('tbl_anggota', ['noloan_kop' => $key])->result_array()
+		);
 		return $data;
 	}
 

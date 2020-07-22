@@ -74,7 +74,7 @@
 											<td><?= tgl_indo($li['tgl_pencairan']) ?></td>
 											<td>Rp. <?= number_format($li['plafond_cair'], 0, ',', '.') ?></td>
 											<td>Rp. <?= number_format($li['ospokok'], 0, ',', '.') ?></td>
-											<td class="text-center"><a href="<?= site_url('admin/koperasi/') . $li['noloan'] ?>"><?= $li['anggota'] ?> Anggota</a></td>
+											<td class="text-center"><a href="<?= site_url('admin/koperasi/anggota/') . $li['noloan'] ?>"><?= $li['anggota'] ?> Anggota</a></td>
 											<td class="text-center">
 												<a href="<?= site_url('admin/koperasi/sunting/') . $li['noloan'] ?>" class="btn btn-xs btn-outline-success" title="Sunting"><i class="fas fa-fw fa-edit"></i></a>
 												<a href="javascript:void(0)" onclick="hapus('<?= $li['noloan'] ?>')" class="btn btn-xs btn-outline-danger" title="Hapus"><i class="fas fa-fw fa-trash"></i></a>

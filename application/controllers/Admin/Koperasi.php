@@ -46,7 +46,7 @@ class Koperasi extends CI_Controller
 		$data['breadcrumb'] = '<li class="breadcrumb-item"><a href="' . site_url('admin/beranda') . '">Dashboard</a></li>';
 		$data['breadcrumb'] .= '<li class="breadcrumb-item"><a href="' . site_url('admin/koperasi') . '">Koperasi</a></li>';
 		$data['breadcrumb'] .= '<li class="breadcrumb-item active" aria-current="page">Daftar Anggota</li>';
-		$data['list'] = $this->m_kop->get_anggota($id)->result_array();
+		$data['list'] = $this->m_kop->get_anggota($id);
 
 		$this->load->view('admin/layout/header');
 		$this->load->view('admin/layout/navbar');
@@ -145,7 +145,8 @@ class Koperasi extends CI_Controller
 				'batch_cair' => input('batch'),
 				'tgl_pencairan' => input('tgl_cair'),
 				'plafond_cair' => str_replace(',', '', input('plafond_cair')),
-				'ospokok' => str_replace(',', '', input('ospokok'))
+				'ospokok' => str_replace(',', '', input('ospokok')),
+				'updateDate' => date('Y-m-d H:i:s')
 			);
 
 			$result = $this->m_kop->sunting($key, $data);
